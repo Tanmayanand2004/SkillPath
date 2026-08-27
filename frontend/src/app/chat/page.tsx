@@ -161,7 +161,7 @@ export default function ChatPage() {
               <Sparkles className="w-3.5 h-3.5 text-white" />
             </div>
             <div>
-              <h1 className="text-sm font-bold leading-none">SkillPath AI</h1>
+              <h1 className="text-sm font-bold leading-none">Atlas</h1>
               <p className="text-[10px] text-emerald-400 mt-0.5 flex items-center gap-1">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse inline-block" />
                 Online
