@@ -23,6 +23,54 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
 }
 
+/* Premium Markdown Formatting */
+.prose table {
+  @apply w-full border-collapse my-6 rounded-xl overflow-hidden shadow-lg border border-white/10;
+}
+
+.prose thead {
+  @apply bg-indigo-500/10 border-b border-indigo-500/20 text-indigo-300;
+}
+
+.prose th {
+  @apply px-4 py-3 text-left font-semibold;
+}
+
+.prose td {
+  @apply px-4 py-3 border-t border-white/5 bg-white/3;
+}
+
+.prose tr:nth-child(even) td {
+  @apply bg-white/5;
+}
+
+.prose tr:hover td {
+  @apply bg-indigo-500/5 transition-colors;
+}
+
+.prose pre {
+  @apply bg-[#0e0e11] border border-white/10 rounded-xl p-4 shadow-xl;
+}
+
+.prose code {
+  @apply text-indigo-300 bg-indigo-500/10 px-1.5 py-0.5 rounded text-sm;
+}
+
+.prose pre code {
+  @apply bg-transparent p-0 text-slate-300 text-sm;
+}
+
+.prose a {
+  @apply text-emerald-400 hover:text-emerald-300 transition-colors no-underline border-b border-emerald-400/30 hover:border-emerald-400;
+}
+
+.prose strong {
+  @apply text-white font-bold;
+}
+
+.prose ul > li::marker {
+  @apply text-indigo-500;
+}
