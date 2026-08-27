@@ -73,10 +73,10 @@ export default function Dashboard() {
       setLoading(true);
       try {
         const [pathsRes, statsRes] = await Promise.all([
-          fetch('http://localhost:5000/api/paths/', {
+          fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/paths/`, {
             headers: { 'Authorization': `Bearer ${authToken}` }
           }),
-          fetch('http://localhost:5000/api/paths/stats', {
+          fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/paths/stats`, {
             headers: { 'Authorization': `Bearer ${authToken}` }
           })
         ]);

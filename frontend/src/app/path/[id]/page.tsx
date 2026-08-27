@@ -208,7 +208,7 @@ export default function PathViewer() {
   useEffect(() => {
     const fetchPath = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/api/paths/${pathId}`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}`}/api/paths/${pathId}`, {
           headers: token ? { 'Authorization': `Bearer ${token}` } : {}
         });
         const data = await res.json();
@@ -218,7 +218,7 @@ export default function PathViewer() {
         }
 
         if (token) {
-          const progRes = await fetch(`http://localhost:5000/api/progress/load/${pathId}`, {
+          const progRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL || `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}`}/api/progress/load/${pathId}`, {
             headers: { 'Authorization': `Bearer ${token}` }
           });
           const progData = await progRes.json();
@@ -257,7 +257,7 @@ export default function PathViewer() {
     // Persist progress
     if (token && pathId) {
       try {
-        await fetch('http://localhost:5000/api/progress/save', {
+        await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/progress/save`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
           body: JSON.stringify({
@@ -279,7 +279,7 @@ export default function PathViewer() {
     setChatLoading(true);
 
     try {
-      const res = await fetch('http://localhost:5000/api/chat/', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/chat/`, {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',

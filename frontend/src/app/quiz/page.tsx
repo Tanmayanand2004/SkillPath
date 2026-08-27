@@ -46,7 +46,7 @@ export default function SkillQuiz() {
     setQuiz(null);
 
     try {
-      const res = await fetch('http://localhost:5000/api/quiz/generate', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/quiz/generate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ topic })
@@ -106,7 +106,7 @@ export default function SkillQuiz() {
     }));
 
     try {
-      const res = await fetch('http://localhost:5000/api/quiz/evaluate', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/quiz/evaluate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ answers: answerPayload, topic: quiz.topic })
