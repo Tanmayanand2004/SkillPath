@@ -26,7 +26,15 @@ from flask_cors import CORS
 
 def create_app(config_class=Config):
     app = Flask(__name__)
-    CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}}, supports_credentials=True)
+    import re
+    allowed_origins = [
+        "http://localhost:3000",
+        re.compile(r"https://.*\.vercel\.app")
+    ]
+    if os.environ.get("FRONTEND_URL"):
+        allowed_origins.append(os.environ.get("FRONTEND_URL"))
+        
+    CORS(app, resources={r"/api/*": {"origins": allowed_origins}}, supports_credentials=True)
     app.config.from_object(config_class)
 
     # If the app is running behind a proxy (like on Render), fix the WSGI environment
