@@ -310,7 +310,7 @@ def generate_path():
                 existing_path.topic = path_data.get("topic", "General")
                 db.session.commit()
                 current_app.logger.info(
-                    f"Updated existing path {path_id} for user {getattr(current_user, "id", None)}"
+                    f"Updated existing path {path_id} for user {getattr(current_user, 'id', None)}"
                 )
             else:
                 # Create new path
@@ -324,7 +324,7 @@ def generate_path():
                 db.session.add(new_path)
                 db.session.commit()
                 current_app.logger.info(
-                    f"Created new path {path_id} for user {getattr(current_user, "id", None)}"
+                    f"Created new path {path_id} for user {getattr(current_user, 'id', None)}"
                 )
 
                 # Create initial progress entries for each milestone
