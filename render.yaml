@@ -1,0 +1,82 @@
+services:
+  # Main Web Service
+  - type: web
+    name: ai-learning-path-api
+    env: python
+    region: oregon
+    plan: free
+    branch: main
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn run:app --bind 0.0.0.0:$PORT --workers 2 --timeout 120
+    
+    # Pre-deploy command to initialize database
+    preDeployCommand: python init_render_db.py
+    
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      
+      - key: FLASK_SECRET_KEY
+        generateValue: true
+      
+      - key: OAUTHLIB_INSECURE_TRANSPORT
+        value: false
+      
+      - key: OAUTHLIB_RELAX_TOKEN_SCOPE
+        value: true
+      
+      - key: RENDER
+        value: true
+      
+      # These need to be set manually in Render dashboard
+      - key: SUPABASE_DATABASE_URL
+        sync: false
+      
+      - key: GROQ_API_KEY
+        sync: false
+
+      - key: DEFAULT_PROVIDER
+        value: groq
+
+      - key: DEFAULT_MODEL
+        value: openai/gpt-oss-20b
+
+      - key: OPENAI_BASE_URL
+        value: https://api.groq.com/openai/v1
+
+      - key: HF_TOKEN
+        sync: false
+
+      - key: EMBEDDING_PROVIDER
+        value: huggingface
+
+      - key: EMBEDDING_MODEL
+        value: BAAI/bge-m3
+
+      - key: EMBEDDING_DIMENSIONS
+        value: 1024
+
+      - key: RESOURCE_SEARCH_PROVIDER
+        value: free
+
+      - key: ENABLE_SEMANTIC_CACHE
+        value: false
+
+      - key: QUERY_REWRITE_ENABLED
+        value: true
+
+      - key: CONTEXTUAL_COMPRESSION_ENABLED
+        value: true
+
+      - key: RERANK_ENABLED
+        value: false
+      
+      - key: GOOGLE_OAUTH_CLIENT_ID
+        sync: false
+      
+      - key: GOOGLE_OAUTH_CLIENT_SECRET
+        sync: false
+      
+# Note: create a free Supabase project and paste the pooled connection string
+# into SUPABASE_DATABASE_URL. Redis/worker mode is optional and not needed for
+# the free single-service prototype.

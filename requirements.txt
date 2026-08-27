@@ -1,0 +1,50 @@
+# Core dependencies
+gunicorn>=21.2.0
+python-dotenv==1.0.1
+Flask>=2.0.1
+
+# Pydantic v2
+pydantic>=2.6.0
+email-validator>=2.1.0
+
+# LangChain - modern stack
+langchain>=0.1.0
+langchain-core>=0.1.0
+langchain-openai>=0.0.2
+langchain-groq>=0.0.1
+openai>=1.0.0  # Using new OpenAI API
+huggingface_hub>=0.24.0
+tiktoken>=0.5.0  # Token counting for cost optimization
+supabase>=2.3.0  # For Auth and pgvector RAG
+Flask-SQLAlchemy==3.1.1
+psycopg2-binary>=2.9.9  # Postgres driver for production
+Flask-Login==0.6.3
+Flask-WTF==1.2.1
+Flask-Migrate==4.0.7
+
+# ML & NLP
+scikit-learn>=1.2.2
+numpy>=1.24.0
+pandas>=2.0.0
+
+Flask-Dance[google]==7.1.0
+
+# Web UI
+flask-wtf>=1.0.0
+Jinja2>=3.0.1
+werkzeug>=2.0.1
+
+# HTTP client for async resource validation
+aiohttp>=3.9.0
+
+# Caching
+redis>=4.6.0,<5.0.0
+rq==1.16.1
+
+# Observability & Monitoring
+langsmith<0.1.0,>=0.0.21  # LLM tracing and debugging (compatible with langchain 0.0.267)
+
+
+google-auth>=2.0.0
+google-auth-httplib2>=0.2.0
+google-auth-oauthlib>=0.4.6
