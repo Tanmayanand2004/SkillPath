@@ -1069,14 +1069,14 @@ def api_save_path():
     #     return jsonify({'success': False, 'error': 'User must be logged in to save paths.'}), 401
 
     # path_title = path_data.get('title', 'Untitled Path')
-    # file_name = f"{getattr(current_user, "id", None)}_{secure_filename(path_title)}.json"
+    # file_name = f"{getattr(current_user, 'id', None)}_{secure_filename(path_title)}.json"
     # save_dir = Path(current_app.root_path) / 'user_saved_paths'
     # save_dir.mkdir(exist_ok=True)
     # file_path = save_dir / file_name
     # with open(file_path, 'w') as f:
     #     json.dump(path_data, f, indent=4)
 
-    # current_app.logger.info(f"Path '{path_title}' saved for user {getattr(current_user, "id", None)} to {file_path}")
+    # current_app.logger.info(f"Path '{path_title}' saved for user {getattr(current_user, 'id', None)} to {file_path}")
     current_app.logger.info(
         f"Path save requested (placeholder): {path_data.get('title')}"
     )
@@ -1115,7 +1115,7 @@ def update_progress():
 
     if not user_path:
         current_app.logger.warning(
-            f"Progress update denied. Path {path_id} not found for user {getattr(current_user, "id", None)}"
+            f"Progress update denied. Path {path_id} not found for user {getattr(current_user, 'id', None)}"
         )
         return jsonify({"status": "error", "message": "Learning path not found"}), 404
 
@@ -1175,7 +1175,7 @@ def update_progress():
     progress_percentage = int((completed / total) * 100) if total > 0 else 0
 
     current_app.logger.info(
-        f"Progress updated for user {getattr(current_user, "id", None)}, path {path_id}, milestone {milestone_identifier}: {old_status} -> {status}"
+        f"Progress updated for user {getattr(current_user, 'id', None)}, path {path_id}, milestone {milestone_identifier}: {old_status} -> {status}"
     )
 
     return jsonify(
@@ -2104,7 +2104,7 @@ def track_resource():
         db.session.commit()
 
         current_app.logger.info(
-            f"Resource progress tracked: User {getattr(current_user, "id", None)}, "
+            f"Resource progress tracked: User {getattr(current_user, 'id', None)}, "
             f"Path {path_id}, M{milestone_index}:R{resource_index}, "
             f"Completed: {completed}"
         )
