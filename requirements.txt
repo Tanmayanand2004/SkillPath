@@ -48,3 +48,4 @@ langsmith<0.1.0,>=0.0.21  # LLM tracing and debugging (compatible with langchain
 google-auth>=2.0.0
 google-auth-httplib2>=0.2.0
 google-auth-oauthlib>=0.4.6
+Flask-Cors>=4.0.0
