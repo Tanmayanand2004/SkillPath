@@ -58,6 +58,10 @@ bp = Blueprint(
     "main", __name__, template_folder="../templates"
 )  # Adjusted template_folder path
 
+@bp.route("/api/health")
+def health_check():
+    return jsonify({"status": "alive"}), 200
+
 
 # Helper to get LearningPathGenerator, initializing if not present in app context
 # This is a temporary setup for CLI compatibility. Proper setup involves app factory.
